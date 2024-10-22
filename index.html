@@ -3,49 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Finder</title>
+    <title>Text Converter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Recipe Finder</h1>
-    </header>
+    <div class="container">
+        <h1>Text to Markdown/HTML Converter</h1>
+        <form action="/convert" method="post">
+            <label for="inputText">Enter Plain Text:</label>
+            <textarea id="inputText" name="inputText" rows="8" cols="50" required></textarea>
 
-    <main>
-        <form id="recipeForm">
-            <h2>Enter Your Ingredients</h2>
-
-            <div id="ingredientsSection">
-                <div class="ingredientInput">
-                    <input type="text" name="ingredient" placeholder="Ingredient" required>
-                    <button type="button" class="removeIngredient">Remove</button>
-                </div>
-            </div>
-            <button type="button" id="addIngredient">Add Ingredient</button>
-
-            <h2>Filters</h2>
-            <label for="dietary">Dietary Restrictions:</label>
-            <select id="dietary" name="dietary">
-                <option value="none">None</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="vegan">Vegan</option>
-                <option value="gluten-free">Gluten Free</option>
+            <label for="format">Convert to:</label>
+            <select id="format" name="format">
+                <option value="markdown">Markdown</option>
+                <option value="html">HTML</option>
             </select>
 
-            <label for="cuisine">Cuisine Type:</label>
-            <select id="cuisine" name="cuisine">
-                <option value="any">Any</option>
-                <option value="italian">Italian</option>
-                <option value="chinese">Chinese</option>
-                <option value="mexican">Mexican</option>
-            </select>
-
-            <button type="submit" id="searchRecipes">Search Recipes</button>
+            <button type="submit">Convert</button>
         </form>
-
-        <div id="results"></div>
-    </main>
-
-    <script src="script.js"></script>
+    </div>
 </body>
 </html>
