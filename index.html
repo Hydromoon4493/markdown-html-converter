@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Converter</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Text Converter</title>
 </head>
 <body>
     <div class="container">
-        <h1>Text to Markdown/HTML Converter</h1>
+        <h1>🎨 Text Converter</h1>
         <form action="/convert" method="post">
-            <label for="inputText">Enter Plain Text:</label>
-            <textarea id="inputText" name="inputText" rows="8" cols="50" required></textarea>
-
-            <label for="format">Convert to:</label>
-            <select id="format" name="format">
-                <option value="markdown">Markdown</option>
+            <textarea name="plain_text" rows="10" cols="30" placeholder="Enter plain text here..." required></textarea><br>
+            <label for="format">Select output format:</label>
+            <select name="format" required>
                 <option value="html">HTML</option>
-            </select>
-
-            <button type="submit">Convert</button>
+                <option value="markdown">Markdown</option>
+            </select><br>
+            <input type="submit" value="Convert">
         </form>
+        <div id="result"></div>
     </div>
 </body>
 </html>
