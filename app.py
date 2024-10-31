@@ -1,25 +1,29 @@
-from flask import Flask, request, render_template_string
-from markdown import markdown
+from flask import Flask, request, send_file, jsonify
+from io import BytesIO
+import markdown2
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template_string(open('index.html').read())
-
 @app.route('/convert', methods=['POST'])
-def convert():
-    plain_text = request.form['plain_text']
-    format_choice = request.form['format']
+def convert_text():
+    data = request.json
+    text = data.get("text", "")
+    format_type = data.get("format", "html")
 
-    if format_choice == 'html':
-        # Convert plain text to HTML (simple conversion)
-        result = "<p>{}</p>".format(plain_text.replace('\n', '</p><p>'))
-    elif format_choice == 'markdown':
-        # Convert plain text to Markdown (using a markdown library)
-        result = markdown(plain_text)
+    output = BytesIO()
+    filename = "converted_text"
 
-    return render_template_string(open('index.html').read() + f"<div><h2>Result:</h2><pre>{result}</pre></div>")
+    if format_type == "html":
+        output_text = f"<html><body><p>{text.replace('\n', '<br>')}</p></body></html>"
+        output.write(output_text.encode("utf-8"))
+        filename += ".html"
+    else:
+        markdown_text = markdown2.markdown(text)
+        output.write(markdown_text.encode("utf-8"))
+        filename += ".md"
+
+    output.seek(0)
+    return send_file(output, as_attachment=True, download_name=filename, mimetype="text/plain")
 
 if __name__ == '__main__':
     app.run(debug=True)
