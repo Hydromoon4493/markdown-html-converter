@@ -1,29 +1,29 @@
-from flask import Flask, request, send_file, jsonify
-from io import BytesIO
-import markdown2
+from flask import Flask, render_template, request
+from markdown import markdown
 
 app = Flask(__name__)
 
-@app.route('/convert', methods=['POST'])
-def convert_text():
-    data = request.json
-    text = data.get("text", "")
-    format_type = data.get("format", "html")
+@app.route("/", methods=["GET", "POST"])
+def home():
+    html_output = ""
+    markdown_output = ""
+    user_input = ""  # Ensuring it starts as an empty string
 
-    output = BytesIO()
-    filename = "converted_text"
+    if request.method == "POST":
+        user_input = request.form.get("input_text", "")
+        
+        # Convert to HTML
+        html_output = f"<p>{user_input}</p>"
 
-    if format_type == "html":
-        output_text = f"<html><body><p>{text.replace('\n', '<br>')}</p></body></html>"
-        output.write(output_text.encode("utf-8"))
-        filename += ".html"
-    else:
-        markdown_text = markdown2.markdown(text)
-        output.write(markdown_text.encode("utf-8"))
-        filename += ".md"
+        # Convert to Markdown
+        markdown_output = markdown(user_input)
 
-    output.seek(0)
-    return send_file(output, as_attachment=True, download_name=filename, mimetype="text/plain")
+    return render_template(
+        "index.html",
+        user_input=user_input,
+        html_output=html_output,
+        markdown_output=markdown_output
+    )
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
