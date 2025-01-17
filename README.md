@@ -80,6 +80,10 @@ This will open the **Text to HTML/Markdown Converter** application where you can
 - `templates/index.html`: The HTML template that displays the user interface.
 - `README.md`: This file that provides instructions on how to set up and run the project.
 
+## Acknowledgements
+
+This project was created with the heavy assistance of OpenAI's ChatGPT, which helped generate the code and structure for the program. All coding and logic were developed using this AI tool.
+
 ## Contributing
 
 If you'd like to contribute to this project, feel free to fork the repository, make changes, and create a pull request.
