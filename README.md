@@ -21,7 +21,9 @@ To run this application, you need the following:
 ### Step 1: Clone or Download the Repository
 
 If you're using Git, clone the repository:
-    'git clone https://github.com/Hydromoon4493/markdown-html-converter'
+```
+git clone https://github.com/Hydromoon4493/markdown-html-converter
+```
 
 Alternatively, download the ZIP file and extract it to a folder.
 
@@ -33,38 +35,54 @@ A virtual environment helps keep project dependencies isolated. Follow these ste
 2. Create a virtual environment:
 
 On **Windows**:
-    'python -m venv venv'
+```
+python -m venv venv
+```
 
 On **Mac/Linux**:
-    'python3 -m venv venv'
+```
+python3 -m venv venv
+```
 
 3. Activate the virtual environment:
 
 On **Windows**:
-    '.\venv\Scripts\activate'
+```
+.\venv\Scripts\activate
+```
 
 On **Mac/Linux**:
-    'source venv/bin/activate'
+```
+source venv/bin/activate
+```
 
 ### Step 3: Install Dependencies
 
 With your virtual environment activated, install the required libraries using `pip`:
-    'pip install flask markdown'
+```
+pip install flask markdown
+```
 
 This will install both **Flask** (for the backend server) and **Markdown** (for converting the text to Markdown format).
 
 ### Step 4: Run the Flask Server
 
 To start the Flask server, run the following command in your terminal:
-    'python app.py'
+```
+python app.py
+```
 
 This will start a local server. The terminal will display something like:
-    'Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)'
+```
+Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
 
 ### Step 5: Access the Web Application
 
 Open your web browser and navigate to:
-    'http://127.0.0.1:5000/'
+```
+http://127.0.0.1:5000/
+```
 
 This will open the **Text to HTML/Markdown Converter** application where you can enter text and see the HTML and Markdown output.
 
@@ -78,20 +96,13 @@ This will open the **Text to HTML/Markdown Converter** application where you can
 
 - `app.py`: The main Flask application that handles routes and the conversion logic.
 - `templates/index.html`: The HTML template that displays the user interface.
+- `static/styles.css`: The CSS style sheet for the formating of the front page.
 - `README.md`: This file that provides instructions on how to set up and run the project.
 
 ## Acknowledgements
 
-This project was created with the heavy assistance of OpenAI's ChatGPT, which helped generate the code and structure for the program. All coding and logic were developed using this AI tool.
+This project was created with assistance of OpenAI's ChatGPT, which helped generate the code and structure for the program. All coding and logic were developed using this AI tool.
 
 ## Contributing
 
 If you'd like to contribute to this project, feel free to fork the repository, make changes, and create a pull request.
-
-## License
-
-This project is open-source and available under the MIT License.
-
----
-
-Enjoy converting your text to HTML and Markdown formats!
